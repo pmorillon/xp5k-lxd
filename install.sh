@@ -31,5 +31,5 @@ gem install xp5k
 # Configure SSH on containers
 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 for i in $(seq -f "lxc%02g" 1 3); do lxc file push /root/.ssh/authorized_keys $i/root/.ssh/authorized_keys; done
-printf 'Host *\n  StrictHostKeyChecking=no\n  PasswordAuthentication=no\n  CheckHostIp=no\n' > .ssh/config
+printf 'Host *\n  StrictHostKeyChecking=no\n  PasswordAuthentication=no\n  CheckHostIp=no\n' > /root/.ssh/config
 
