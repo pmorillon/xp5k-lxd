@@ -4,7 +4,11 @@
 # Install last stable version of LXD
 add-apt-repository -y ppa:ubuntu-lxc/lxd-stable
 apt update
-apt-get install -y lxd
+apt-get install -y lxd zfsutils-linux
+
+# Tunning system
+cp tunning/limits.lxd.conf /etc/security/limits.d/lxd.conf
+cp tunning/sysctl.lxd.conf /etc/sysctl.d/20-lxd.conf
 
 # Configure LXD
 lxd init --auto --storage-backend zfs --storage-create-loop 50 --storage-pool lxd --trust-password lxd --network-address 0.0.0.0 --network-port 8443

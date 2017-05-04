@@ -6,7 +6,7 @@
 frontend$ oarsub -I -l {"cluster='parasilo'"}/nodes=1,walltime=2
 node$ . /grid5000/Modules/modules.sh
 node$ module load veertuosa/0.0.1
-node$ veertuosa_launch -n xp5k -i /grid5000/images/veertuosa/ubuntu-16.04-x86_64.qcow2
+node$ veertuosa_launch -n xp5k -i /grid5000/images/veertuosa/ubuntu-17.04-x86_64.qcow2
 node$ ssh-vm xp5k
 vm$ git clone https://github.com/pmorillon/xp5k-lxd.git
 vm$ cd xp5k-lxd
