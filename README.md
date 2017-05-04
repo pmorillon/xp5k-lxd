@@ -8,8 +8,12 @@ node$ . /grid5000/Modules/modules.sh
 node$ module load veertuosa/0.0.1
 node$ veertuosa_launch -n xp5k -i /grid5000/images/veertuosa/ubuntu-17.04-x86_64.qcow2
 node$ ssh-vm xp5k
+vm$ apt update && apt install -y git-core
 vm$ git clone https://github.com/pmorillon/xp5k-lxd.git
 vm$ cd xp5k-lxd
+vm$ sh tunning/tune.sh
+vm$ ulimit -n 1048576
+vm$ ulimit -l unlimited
 vm$ sh ./install.sh
 vm$ lxc list
 +-------+---------+----------------------+-----------------------------------------------+------------+-----------+

@@ -26,7 +26,7 @@ apt install -y ruby ruby-dev
 apt install -y build-essential
 
 # Install XP5K
-gem install xp5k
+gem install --no-ri --no-rdoc xp5k
 
 # Configure SSH on containers
 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
