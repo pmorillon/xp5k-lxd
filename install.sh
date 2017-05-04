@@ -14,7 +14,7 @@ lxc network create lxdbr0
 lxc network attach-profile lxdbr0 default eth0
 
 # Create containers
-for i in $(seq -f "lxc%02g" 1 3); do lxc launch ubuntu:xenial $i; done
+for i in $(seq -f "lxc%02g" 1 20); do lxc launch ubuntu:xenial $i; done
 
 # Configure DNS
 BRIDGE_IP=$(lxc network get lxdbr0 ipv4.address | cut -d"/" -f1)
@@ -30,6 +30,6 @@ gem install --no-ri --no-rdoc xp5k
 
 # Configure SSH on containers
 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
-for i in $(seq -f "lxc%02g" 1 3); do lxc file push /root/.ssh/authorized_keys $i/root/.ssh/authorized_keys; done
+for i in $(seq -f "lxc%02g" 1 20); do lxc file push /root/.ssh/authorized_keys $i/root/.ssh/authorized_keys; done
 printf 'Host *\n  StrictHostKeyChecking=no\n  PasswordAuthentication=no\n  CheckHostIp=no\n' > /root/.ssh/config
 

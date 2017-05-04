@@ -3,24 +3,24 @@ require 'xp5k/rake'
 
 XP5K::Role.new({
   name: 'puppetserver',
-  servers: ['lxc01'],
+  servers: ['lxc01.lxd'],
   size: 1
 }).add
 
 XP5K::Role.new({
   name: 'controller',
-  servers: ['lxc02'],
+  servers: ['lxc02.lxd'],
   size: 1
 }).add
 
 XP5K::Role.new({
-  name: 'compute',
-  servers: ['lxc03'],
-  size: 1
+  name: 'computes',
+  servers: (4..20).to_a.map {|x| "lxc#{format('%02d', x)}.lxd" },
+  size: 17
 }).add
 
 role 'all' do
-    roles 'puppetserver', 'controller', 'compute'
+    roles 'puppetserver', 'controller', 'computes'
 end
 
 XP5K::Config[:gateway] = 'root@localhost'
